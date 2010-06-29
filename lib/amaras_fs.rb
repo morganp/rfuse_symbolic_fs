@@ -1,3 +1,5 @@
+require 'pp'
+
 class AmarasFS
 
    def initialize(*args)
@@ -32,11 +34,14 @@ class AmarasFS
    private
 
    def build_links( root, y )
+         puts "build_links( root, y )"
+         puts "build_links( #{root}, #{y})"
       
          files = Dir.glob(y + '/*')
-         #Dir.foreach(@partitions[0]) do |x|
 
-         puts "Iterating of SubFiles"
+         pp files
+
+         #puts "Iterating of SubFiles"
          files.each do |x|
 
             #TODO validation that link does not already exist
@@ -45,13 +50,15 @@ class AmarasFS
             new_link[y] = "" 
             new_link = root + new_link
 
-            puts "Thinking about linking #{new_link}"
+            puts "Thinking about linking #{new_link} "
+            puts " sub file #{x}" 
 
             #Verify that new_link does not exists
             if not File.exist?( new_link )
                puts "File.symlink(#{x}, #{new_link} )"
                File.symlink(x, new_link)
-            elsif ( (not File.directory?(new_link)) and ( File.readlink(new_link) == x))
+            elsif ( ( File.symlink?(new_link)) and ( File.readlink(new_link) == x))
+               #readlink rasies exception if called on non links so check is a link first
                #Link exists but points to location we tried to set
                puts "INFO   : Link Exists & correct"
             elsif File.directory?(new_link)
