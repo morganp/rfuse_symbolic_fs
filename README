@@ -1,0 +1,10 @@
+ln -s ~/mnt/Starbug1_Public/link_test/B ./
+Queeg500 link_test $ ln -s ~/mnt/morgy/link_test/C ./
+Queeg500 link_test $ ln -s ~/mnt/morgy/link_test/D ./
+Queeg500 link_test $ ll
+total 16
+lrwxr-xr-x 1 morgy staff 44 2010-06-21 22:06 A -> /Users/morgy/mnt/Starbug1_Public/link_test/A/
+lrwxr-xr-x 1 morgy staff 44 2010-06-21 22:06 B -> /Users/morgy/mnt/Starbug1_Public/link_test/B/
+lrwxr-xr-x 1 morgy staff 34 2010-06-21 22:07 C -> /Users/morgy/mnt/morgy/link_test/C/
+lrwxr-xr-x 1 morgy staff 34 2010-06-21 22:07 D -> /Users/morgy/mnt/morgy/link_test/D/
+
