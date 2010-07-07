@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'rfuse_symbolic_fs'
+
+a = RFuseSymbolicFS.new(ARGV)
+
