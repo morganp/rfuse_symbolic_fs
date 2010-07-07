@@ -2,6 +2,14 @@
 
 require 'rubygems'
 require 'rfuse_symbolic_fs'
+require 'rfuse_symbolic_fs_opts'
 
-a = RFuseSymbolicFS.new(ARGV)
+options = RFuseSymbolicFSOpts.parse(ARGV)
+
+filesystem = RFuseSymbolicFS.new(options)
+FuseFS.set_root( filesystem )
+
+# Mount under a directory given on the command line.
+FuseFS.mount_under options.mountpoint
+FuseFS.run
 

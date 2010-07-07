@@ -1,5 +1,7 @@
 require "rubygems"
 require 'fusefs'
+require 'rfuse_symbolic_fs_opts'
+
 
 class RFuseSymbolicFS
    # contents( path )
@@ -24,9 +26,8 @@ class RFuseSymbolicFS
 
 
 
-   def initialize
-      #TODO replace this with optparse
-      @base_dir = '/Users/morgy/Movies'
+   def initialize( options )
+      @base_dir = options.input
    end
 
    def contents(path)
@@ -46,17 +47,7 @@ class RFuseSymbolicFS
          return true
       end
 
-      #if File.exists?(@base_dir + path )
-         #puts "file? #{@base_dir}#{path} "
-         #if File.directory?(@base_dir + path )
-         #   return false
-         #else 
-         #   return true
-         #end
-      #end
       return (not File.directory?( @base_dir + path ))
-
-
    end
 
    def directory?(path)
@@ -65,7 +56,7 @@ class RFuseSymbolicFS
   
    def read_file(path)
       
-      puts "read file #{path}"
+      #puts "read file #{path}"
       if File.exists?( @base_dir + path )
          return File.new(@base_dir + path , "r").read
       end
@@ -83,10 +74,15 @@ class RFuseSymbolicFS
    end
 end
 
-filesystem = RFuseSymbolicFS.new
-FuseFS.set_root( filesystem )
 
-# Mount under a directory given on the command line.
-FuseFS.mount_under ARGV.shift
-FuseFS.run
+if $0 == __FILE__
+
+   options = RFuseSymbolicFSOpts.parse(ARGV)
+   filesystem = RFuseSymbolicFS.new( options )
+   FuseFS.set_root( filesystem )
+
+   # Mount under a directory given on the command line.
+   FuseFS.mount_under options.mountpoint
+   FuseFS.run
+end
 
