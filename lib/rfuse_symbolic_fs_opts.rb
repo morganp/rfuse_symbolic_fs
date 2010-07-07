@@ -2,7 +2,7 @@ require 'optparse'
 require 'optparse/time'
 require 'ostruct'
 
-class RFuseSymbolicFS
+class RFuseSymbolicFSOpts
 
 
     #
@@ -62,8 +62,8 @@ class RFuseSymbolicFS
       options.leftovers = opts.parse!(args)
 
       if (options.mountpoint == "") and (options.input == "") and (options.leftovers.size==2)
-         options.mountpoint = options.leftovers.get(0)
-         options.input      = options.leftovers.get(1)
+         options.mountpoint = options.leftovers[0]
+         options.input      = options.leftovers[1]
       end
       return options
     end # parse()

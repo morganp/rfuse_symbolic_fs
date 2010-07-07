@@ -11,11 +11,12 @@ spec = Gem::Specification.new do |s|
    s.authors      = "Morgan Prior"
    s.email        = "#{gem_name}_gem@amaras-tech.co.uk"
    s.description  = "Virtual Filesystem Written in Ruby Fuse, which acts like a symbolic link"
-   s.files        = ["bin/**", 'lib/**']
+   s.files        = ["bin/#{gem_name}"]
+   s.files        += Dir.glob("lib/*")
    s.bindir       = 'bin'   
    s.executables  = [gem_name]
    s.has_rdoc     = false
-   s.add_dependency   ("fusefs",">= 0.7.0")
+   s.add_dependency("fusefs",">= 0.7.0")
 
    s.post_install_message = "To use '#{gem_name}' as a standalone application your gems folder must be on your path"   
 end
