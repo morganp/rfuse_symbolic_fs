@@ -9,7 +9,7 @@ class RFuseSymbolicFSOpts
     # Return a structure describing the options.
     #
     def self.parse(args)
-      @VERSION = "0.0.1"
+      @VERSION = "0.0.2"
       
       # The options specified on the command line will be collected in *options*.
       # We set default values here.
@@ -53,7 +53,7 @@ class RFuseSymbolicFSOpts
          end
          
          opts.on("--input N", String, "Folder FS will point to") do |n|
-            options.input = n
+            options.input = File.expand_path( n )
          end
          
         
@@ -63,8 +63,10 @@ class RFuseSymbolicFSOpts
 
       if (options.mountpoint == "") and (options.input == "") and (options.leftovers.size==2)
          options.mountpoint = options.leftovers[0]
-         options.input      = options.leftovers[1]
+         options.input      = File.expand_path( options.leftovers[1] )
       end
+
+
       return options
     end # parse()
 
