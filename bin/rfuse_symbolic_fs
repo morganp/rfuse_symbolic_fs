@@ -1,10 +1,14 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
+
+rfuse_symbolic_dir = File.expand_path( File.join( File.dirname(__FILE__), '..', 'lib') )
+$LOAD_PATH.unshift(rfuse_symbolic_dir) unless $LOAD_PATH.include?(rfuse_symbolic_dir)
+
 require 'rfuse_symbolic_fs'
 require 'rfuse_symbolic_fs_opts'
 
-options = RFuseSymbolicFSOpts.parse(ARGV)
+options    = RFuseSymbolicFSOpts.parse(ARGV)
 
 filesystem = RFuseSymbolicFS.new(options)
 FuseFS.set_root( filesystem )
