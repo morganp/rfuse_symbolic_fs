@@ -4,7 +4,7 @@ gem_name = 'rfuse_symbolic_fs'
 
 spec = Gem::Specification.new do |s|
    s.name         = gem_name
-   s.version      = '0.0.2'
+   s.version      = '0.0.3'
    s.platform     = Gem::Platform::RUBY
    s.summary      = 'Ruby Fuse, Filesystem which basically is a soft link on Mac OS X, Linux and Unix.'
    s.homepage     = "http://amaras-tech.co.uk/software/#{gem_name}"

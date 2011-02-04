@@ -9,7 +9,7 @@ class RFuseSymbolicFSOpts
     # Return a structure describing the options.
     #
     def self.parse(args)
-      @VERSION = "0.0.2"
+      @VERSION = "0.0.3"
       
       # The options specified on the command line will be collected in *options*.
       # We set default values here.
