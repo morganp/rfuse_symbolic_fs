@@ -1,0 +1,25 @@
+GIT
+  remote: git://github.com/duairc/fusefs.git
+  revision: 9c7f1486218c8401685e6893737e3f78a9e5742c
+  specs:
+    fusefs (0.7.1)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    diff-lcs (1.1.2)
+    rspec (2.6.0)
+      rspec-core (~> 2.6.0)
+      rspec-expectations (~> 2.6.0)
+      rspec-mocks (~> 2.6.0)
+    rspec-core (2.6.4)
+    rspec-expectations (2.6.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.6.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  fusefs!
+  rspec
